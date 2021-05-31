@@ -1,5 +1,5 @@
 exports.procal = function(price, startDate, endDate, rate){
-    let period = Math.ceil((endDate - startDate) / (30 * 24 * 3600 * 1000));
+    let period = Math.ceil((new Date(endDate) - new Date(startDate)) / (30 * 24 * 3600 * 1000));
     return exports.calculate(price, period, rate);
 }
 

@@ -1,11 +1,54 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
+<head>
+    <title>Interest Value</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+</head>
+<body>
+    <form action="/" method="post">
+        <div>
+            <label for="price">Price</label>
+            <input type="text" id="price" name="price">
+        </div>
+        <div>
+            <label for="startDate">Start Date</label>
+            <input type="text" id="startDate" name="startDate">
+        </div>
+        <div>
+            <label for="endDate">End Date</label>
+            <input type="text" id="endDate" name="endDate">
+        </div>
+        <div>
+            <label for="rate">Rate</label>
+            <input type="text" id="rate" name="rate">
+        </div>
+        <input type="submit" value="Calculate">
+    </form>
+    <% if(prices.length){ %>
+    <table>
+        <thead>
+            <tr>
+                <td>Price</td>
+                <td>Start Date</td>
+                <td>End Date</td>
+                <td>Rate</td>
+                <td>Interest Value</td>        
+            </tr>
+        </thead>
+        <tbody>
+        <% prices.forEach(function(price) { %>
+            <tr>
+                <td><%= price.price %></td>
+                <td><%= price.startDate %></td>
+                <td><%= price.endDate %></td>
+                <td><%= price.rate %></td>
+                <td><%= price.iv %></td>
+            </tr>
+        <% }) %>        
+        </tbody>
+    </table>
+    <% } else { %>
+        <p>No data is shown in table</p>
+    <% } %>
+</body>
 </html>
