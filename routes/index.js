@@ -1,4 +1,5 @@
 var express = require('express');
+var app = express();
 var router = express.Router();
 var procal = require('./procal')
 
@@ -17,6 +18,18 @@ router.post('/', function(req, res){
     rate: req.body.rate,
     iv: procal.procal(req.body.price, req.body.startDate, req.body.endDate, req.body.rate)
   });
+  res.render('index', { prices: p});
+});
+
+router.delete('/api/:id', function(req, res){
+  let id = parseInt(req.params.id);
+  if(id){
+    let value = p[id];
+    if(value !== undefined){
+      p.splice(id, 1);
+    }
+  }
+  res.render('index', { prices: p });
 })
 
 module.exports = router;

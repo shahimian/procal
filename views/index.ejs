@@ -5,6 +5,7 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
+    <h1>Interest Value</h1>
     <form action="/" method="post">
         <div>
             <label for="price">Price</label>
@@ -24,6 +25,7 @@
         </div>
         <input type="submit" value="Calculate">
     </form>
+    <h2>Report</h2>
     <% if(prices.length){ %>
     <table>
         <thead>
@@ -32,17 +34,19 @@
                 <td>Start Date</td>
                 <td>End Date</td>
                 <td>Rate</td>
-                <td>Interest Value</td>        
+                <td>Interest Value</td>
+                <td></td>
             </tr>
         </thead>
         <tbody>
-        <% prices.forEach(function(price) { %>
+        <% prices.forEach(function(price, index) { %>
             <tr>
                 <td><%= price.price %></td>
                 <td><%= price.startDate %></td>
                 <td><%= price.endDate %></td>
                 <td><%= price.rate %></td>
                 <td><%= price.iv %></td>
+                <td><a href="/delete/<%= index %>">Delete</a></td>
             </tr>
         <% }) %>        
         </tbody>
